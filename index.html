@@ -1,1 +1,372 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <title>LIGDZ — Independent Clothing</title>
+  <meta name="description" content="LIGDZ — Independent clothing. Built with intention.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #090909;
+      --panel: #111111;
+      --white: #f2f2f0;
+      --muted: #888884;
+      --line: #292929;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topline {
+      height: 3px;
+      background: var(--white);
+      width: 100%;
+    }
+
+    header {
+      height: 82px;
+      padding: 0 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: 5px;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #c4c4c0;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .hero {
+      min-height: 680px;
+      padding: 100px 7% 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      font-family: "DM Mono", monospace;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(76px, 17vw, 220px);
+      line-height: .78;
+      letter-spacing: -.105em;
+      font-weight: 700;
+    }
+
+    .hero h1 span {
+      display: block;
+    }
+
+    .hero-bottom {
+      margin-top: 65px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+    }
+
+    .hero-bottom p {
+      max-width: 340px;
+      color: #aaa;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .scroll {
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 2px;
+    }
+
+    .section {
+      padding: 110px 7%;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-label {
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 3px;
+      margin-bottom: 35px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .about-grid h2 {
+      font-size: clamp(38px, 6vw, 76px);
+      line-height: .98;
+      letter-spacing: -4px;
+      max-width: 600px;
+    }
+
+    .about-grid p {
+      color: #aaa;
+      font-size: 15px;
+      line-height: 1.9;
+      max-width: 420px;
+    }
+
+    .chapter {
+      background: var(--panel);
+    }
+
+    .chapter-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 55px;
+    }
+
+    .chapter-number {
+      font-family: "DM Mono", monospace;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .chapter-title {
+      font-size: clamp(70px, 14vw, 170px);
+      font-weight: 700;
+      letter-spacing: -.09em;
+      line-height: .85;
+    }
+
+    .chapter-info {
+      margin-top: 45px;
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      align-items: end;
+    }
+
+    .chapter-info p {
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      line-height: 2;
+      max-width: 330px;
+    }
+
+    .status {
+      border: 1px solid #444;
+      padding: 12px 17px;
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .manifesto {
+      text-align: center;
+      padding-top: 150px;
+      padding-bottom: 150px;
+    }
+
+    .manifesto h2 {
+      font-size: clamp(36px, 7vw, 90px);
+      line-height: 1;
+      letter-spacing: -5px;
+    }
+
+    .manifesto p {
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      margin-top: 30px;
+    }
+
+    footer {
+      padding: 35px 7%;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        height: 70px;
+        padding: 0 6%;
+      }
+
+      nav {
+        gap: 13px;
+        font-size: 9px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .hero {
+        min-height: 600px;
+        padding: 90px 6%;
+      }
+
+      .hero-bottom,
+      .chapter-info {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .section {
+        padding: 85px 6%;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .chapter-title {
+        font-size: 23vw;
+      }
+
+      .manifesto h2 {
+        letter-spacing: -2px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topline"></div>
+
+  <header>
+    <a class="logo" href="#">LIGDZ</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#chapter">001</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Independent clothing · Est. 2027</div>
+
+      <h1>
+        <span>LIGDZ</span>
+      </h1>
+
+      <div class="hero-bottom">
+        <p>
+          No shortcuts. No copy. Just vision.
+          A new chapter in independent clothing.
+        </p>
+        <div class="scroll">SCROLL TO DISCOVER ↓</div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-label">01 / THE IDEA</div>
+
+      <div class="about-grid">
+        <h2>Made with intention. Never just another label.</h2>
+
+        <p>
+          LIGDZ is built around individuality, creativity and the courage
+          to create something different. Every detail has a purpose.
+          Every chapter tells a story.
+          <br><br>
+          This is only the beginning.
+        </p>
+      </div>
+    </section>
+
+    <section class="section chapter" id="chapter">
+      <div class="chapter-top">
+        <div class="section-label">02 / FIRST RELEASE</div>
+        <div class="chapter-number">CHAPTER 001</div>
+      </div>
+
+      <div class="chapter-title">001.</div>
+
+      <div class="chapter-info">
+        <p>
+          THE FIRST CHAPTER.<br>
+          A NEW BEGINNING.<br>
+          CURRENTLY IN DEVELOPMENT.
+        </p>
+
+        <div class="status">COMING SOON</div>
+      </div>
+    </section>
+
+    <section class="section manifesto">
+      <div class="section-label">03 / THE MINDSET</div>
+      <h2>Built different.<br>By design.</h2>
+      <p>NOT MADE TO FOLLOW.</p>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div>© 2027 LIGDZ</div>
+    <a href="mailto:ligdz.official@gmail.com">CONTACT</a>
+    <div>INDEPENDENT BY NATURE.</div>
+  </footer>
+</body>
+</html>
+
