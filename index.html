@@ -4,11 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#090909">
-
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="LIGDZ — Independent clothing. A vision beyond clothing.">
   <title>LIGDZ — Independent Clothing</title>
-
-  <meta name="description" content="LIGDZ. Independent clothing. A vision beyond the ordinary.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,9 +14,9 @@
 
   <style>
     :root {
-      --bg: #090909;
-      --panel: #111111;
-      --white: #f2f2f0;
+      --bg: #080808;
+      --surface: #101010;
+      --white: #f4f4f0;
       --muted: #888884;
       --line: #292929;
     }
@@ -27,17 +25,14 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-
-    html {
       scroll-behavior: smooth;
-      scroll-padding-top: 90px;
     }
 
     body {
       background: var(--bg);
       color: var(--white);
-      font-family: "Space Grotesk", sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
     }
 
     a {
@@ -45,14 +40,12 @@
       text-decoration: none;
     }
 
-    ::selection {
-      background: white;
-      color: black;
-    }
-
-    .topline {
-      height: 3px;
-      background: var(--white);
+    .mono {
+      font-family: 'DM Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 10px;
+      color: var(--muted);
     }
 
     header {
@@ -65,26 +58,28 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(9,9,9,.94);
-      backdrop-filter: blur(15px);
+      background: rgba(8,8,8,.94);
+      backdrop-filter: blur(12px);
     }
 
-    .logo {
-      font-size: 25px;
-      font-weight: 700;
-      letter-spacing: 5px;
+    .header-logo img {
+      width: 76px;
+      height: 66px;
+      object-fit: contain;
+      display: block;
     }
 
     nav {
       display: flex;
-      gap: 28px;
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-      text-transform: uppercase;
-      color: #c4c4c0;
+      gap: 30px;
+      align-items: center;
     }
 
     nav a {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: #aaa;
       transition: color .25s;
     }
 
@@ -92,280 +87,211 @@
       color: white;
     }
 
-    .eyebrow,
-    .section-label {
-      font-family: "DM Mono", monospace;
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
     .hero {
-      min-height: 690px;
-      padding: 110px 7% 85px;
+      min-height: 88vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 20px;
       position: relative;
-      overflow: hidden;
     }
 
-    .hero h1 {
-      font-size: clamp(75px, 17vw, 220px);
-      line-height: .78;
-      letter-spacing: -.105em;
-      font-weight: 700;
-      margin-top: 32px;
+    .hero-logo {
+      width: min(310px, 72vw);
+      height: auto;
+      margin-bottom: 34px;
+      animation: appear 1.2s ease both;
     }
 
-    .hero-bottom {
-      margin-top: 70px;
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 25px;
-    }
-
-    .hero-bottom p {
-      max-width: 350px;
-      color: #aaa;
-      font-size: 14px;
-      line-height: 1.9;
-    }
-
-    .scroll {
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 2px;
-    }
-
-    .section {
-      padding: 115px 7%;
-      border-top: 1px solid var(--line);
-    }
-
-    /* ABOUT US */
-
-    .about-us-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 80px;
-      align-items: start;
-      margin-top: 45px;
-    }
-
-    .about-us-title {
-      font-size: clamp(55px, 10vw, 125px);
-      line-height: .85;
-      letter-spacing: -7px;
-      font-weight: 700;
-    }
-
-    .about-us-copy {
-      padding-top: 10px;
-    }
-
-    .about-us-copy h3 {
-      font-size: 25px;
-      margin-bottom: 25px;
-    }
-
-    .about-us-copy p {
-      color: #aaa;
-      font-size: 14px;
-      line-height: 2;
+    .hero .eyebrow {
       margin-bottom: 20px;
     }
 
-    .about-signature {
-      margin-top: 35px;
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
+    .hero h1 {
+      font-size: clamp(42px, 8vw, 92px);
+      font-weight: 600;
+      letter-spacing: -5px;
+      line-height: .95;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 13px;
       letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
-    /* THE WORLD */
-
-    .world {
-      background: var(--panel);
+    .hero-bottom {
+      position: absolute;
+      bottom: 35px;
+      left: 7%;
+      right: 7%;
+      display: flex;
+      justify-content: space-between;
     }
 
-    .world-heading {
-      font-size: clamp(48px, 9vw, 110px);
-      line-height: .9;
-      letter-spacing: -6px;
-      margin: 45px 0 65px;
+    .section {
+      padding: 120px 12%;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-number {
+      margin-bottom: 25px;
+    }
+
+    .section h2 {
+      font-size: clamp(34px, 6vw, 66px);
+      font-weight: 500;
+      letter-spacing: -2.5px;
+      line-height: 1.05;
+      margin-bottom: 35px;
+    }
+
+    .about-copy {
+      max-width: 680px;
+      color: #aaa;
+      font-size: 16px;
+      line-height: 2;
+    }
+
+    .about-copy p {
+      margin-bottom: 20px;
+    }
+
+    .signature {
+      color: white;
+      margin-top: 28px;
+      font-size: 12px;
+      letter-spacing: 3px;
     }
 
     .world-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--line);
+      gap: 14px;
+      margin-top: 55px;
     }
 
     .world-card {
-      padding: 35px 25px 35px 0;
-      border-right: 1px solid var(--line);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 38px 25px;
+      min-height: 190px;
+      transition: border-color .3s, transform .3s;
     }
 
-    .world-card:not(:first-child) {
-      padding-left: 25px;
-    }
-
-    .world-card:last-child {
-      border-right: none;
-    }
-
-    .world-card span {
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 2px;
+    .world-card:hover {
+      border-color: #777;
+      transform: translateY(-4px);
     }
 
     .world-card h3 {
-      font-size: 25px;
-      margin: 35px 0 15px;
+      font-size: 19px;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
     }
 
     .world-card p {
-      color: #999;
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.8;
+      color: var(--muted);
     }
-
-    /* CHAPTER 001 */
 
     .chapter {
-      background: #0c0c0c;
+      background: #0d0d0d;
+      text-align: center;
+      padding: 140px 20px;
     }
 
-    .chapter-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 55px;
+    .chapter h2 {
+      font-size: clamp(38px, 7vw, 76px);
+      letter-spacing: -3px;
+      margin: 22px 0;
     }
 
-    .chapter-number {
-      font-family: "DM Mono", monospace;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .chapter-title {
-      font-size: clamp(75px, 15vw, 180px);
-      font-weight: 700;
-      letter-spacing: -.09em;
-      line-height: .85;
-    }
-
-    .chapter-info {
-      margin-top: 50px;
-      display: flex;
-      justify-content: space-between;
-      gap: 25px;
-      align-items: end;
-    }
-
-    .chapter-info p {
-      color: var(--muted);
-      font-family: "DM Mono", monospace;
-      font-size: 11px;
-      line-height: 2;
-      max-width: 360px;
-    }
-
-    .status {
-      border: 1px solid #444;
-      padding: 12px 17px;
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
+    .chapter-phrase {
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: clamp(17px, 3vw, 24px);
+      line-height: 1.6;
       letter-spacing: 1px;
     }
 
-    /* MANIFESTO */
+    .coming {
+      margin-top: 45px;
+      display: inline-block;
+      border: 1px solid #555;
+      padding: 14px 28px;
+    }
+
+    .archive-content {
+      border: 1px solid var(--line);
+      padding: 55px 30px;
+      text-align: center;
+      margin-top: 35px;
+      background: var(--surface);
+    }
+
+    .archive-content p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+      max-width: 450px;
+      margin: 15px auto 0;
+    }
 
     .manifesto {
       text-align: center;
-      padding-top: 150px;
-      padding-bottom: 150px;
+      padding: 115px 20px;
+      border-top: 1px solid var(--line);
     }
 
     .manifesto h2 {
-      font-size: clamp(38px, 7vw, 90px);
-      line-height: 1;
-      letter-spacing: -5px;
+      font-size: clamp(30px, 6vw, 65px);
+      letter-spacing: -2px;
+      margin-bottom: 20px;
     }
 
     .manifesto p {
+      font-size: 11px;
+      letter-spacing: 4px;
       color: var(--muted);
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-      letter-spacing: 3px;
-      margin-top: 30px;
     }
 
-    /* CONTACT */
-
     .contact {
-      background: #111;
       text-align: center;
     }
 
-    .contact h2 {
-      font-size: clamp(48px, 9vw, 105px);
-      letter-spacing: -6px;
-      margin: 40px 0 25px;
-    }
-
-    .contact p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 35px;
-    }
-
-    .contact-link {
+    .contact a {
       display: inline-block;
-      padding: 15px 25px;
-      border: 1px solid #555;
-      font-family: "DM Mono", monospace;
-      font-size: 11px;
-      letter-spacing: 1px;
-      transition: background .25s, color .25s;
+      margin-top: 10px;
+      border-bottom: 1px solid #888;
+      padding-bottom: 8px;
+      font-size: 15px;
     }
-
-    .contact-link:hover {
-      background: white;
-      color: black;
-    }
-
-    /* FOOTER */
 
     footer {
-      padding: 35px 7%;
       border-top: 1px solid var(--line);
+      padding: 35px 7%;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       gap: 20px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
     }
 
-    footer a:hover {
-      color: white;
+    footer img {
+      width: 58px;
+      height: 48px;
+      object-fit: contain;
     }
-
-    /* ANIMATIONS */
 
     @keyframes appear {
       from {
         opacity: 0;
-        transform: translateY(18px);
+        transform: translateY(15px);
       }
       to {
         opacity: 1;
@@ -373,95 +299,61 @@
       }
     }
 
-    .hero .eyebrow,
-    .hero h1,
-    .hero-bottom {
-      animation: appear .9s ease both;
-    }
-
-    .hero h1 {
-      animation-delay: .15s;
-    }
-
-    .hero-bottom {
-      animation-delay: .3s;
-    }
-
-    /* MOBILE */
-
     @media (max-width: 700px) {
       header {
         height: 72px;
-        padding: 0 6%;
+        padding: 0 5%;
+      }
+
+      .header-logo img {
+        width: 62px;
+        height: 56px;
       }
 
       nav {
-        gap: 12px;
-        font-size: 8px;
+        gap: 13px;
       }
 
-      .logo {
-        font-size: 19px;
-        letter-spacing: 3px;
+      nav a {
+        font-size: 8px;
+        letter-spacing: .5px;
       }
 
       .hero {
-        min-height: 590px;
-        padding: 90px 6%;
+        min-height: 80vh;
       }
 
-      .hero-bottom,
-      .chapter-info {
-        align-items: flex-start;
-        flex-direction: column;
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-bottom {
+        left: 5%;
+        right: 5%;
       }
 
       .section {
-        padding: 85px 6%;
-      }
-
-      .about-us-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .about-us-title {
-        letter-spacing: -3px;
+        padding: 85px 7%;
       }
 
       .world-grid {
         grid-template-columns: 1fr;
       }
 
-      .world-card,
-      .world-card:not(:first-child) {
-        padding: 28px 0;
-        border-right: none;
-        border-bottom: 1px solid var(--line);
+      .world-card {
+        min-height: auto;
       }
 
-      .world-heading {
-        letter-spacing: -2px;
-      }
-
-      .chapter-title {
-        font-size: 24vw;
-      }
-
-      .manifesto h2 {
-        letter-spacing: -2px;
-      }
-
-      .contact h2 {
-        letter-spacing: -3px;
+      footer {
+        padding: 28px 6%;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
-        animation-duration: .01ms !important;
         scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
+        animation: none !important;
+        transition: none !important;
       }
     }
   </style>
@@ -469,224 +361,138 @@
 
 <body>
 
-  <div class="topline"></div>
-
   <header>
-    <a class="logo" href="#home">LIGDZ</a>
+    <a class="header-logo" href="#home" aria-label="LIGDZ Home">
+      <img src="ligdz-logo.jpeg" alt="LIGDZ flower logo">
+    </a>
 
     <nav>
-      <a href="#about">About</a>
-      <a href="#world">Our World</a>
+      <a href="#about">ABOUT</a>
+      <a href="#world">WORLD</a>
       <a href="#chapter">001</a>
-      <a href="#contact">Contact</a>
+      <a href="#archive">ARCHIVE</a>
+      <a href="#contact">CONTACT</a>
     </nav>
   </header>
 
   <main>
-
-    <!-- HOME -->
-
     <section class="hero" id="home">
-      <div class="eyebrow">
-        Independent Clothing · Est. 2027
+      <img class="hero-logo" src="ligdz-logo.jpeg" alt="LIGDZ official flower and wordmark">
+
+      <p class="mono eyebrow">INDEPENDENT CLOTHING</p>
+      <h1>BEYOND<br>THE ORDINARY.</h1>
+      <p>No shortcuts. No copy. Just vision.</p>
+
+      <div class="hero-bottom mono">
+        <span>CHAPTER 001</span>
+        <span>THE BEGINNING</span>
       </div>
+    </section>
 
-      <h1>LIGDZ</h1>
+    <section class="section" id="about">
+      <p class="mono section-number">01 / ABOUT US</p>
+      <h2>EVERY BRAND HAS A BEGINNING.<br>THIS IS OURS.</h2>
 
-      <div class="hero-bottom">
+      <div class="about-copy">
         <p>
-          No shortcuts. No copy. Just vision.
-          A new chapter in independent clothing.
+          LIGDZ was created from an idea: to build something
+          that goes beyond clothing.
         </p>
 
-        <div class="scroll">
-          SCROLL TO DISCOVER ↓
-        </div>
+        <p>
+          What started as a vision became a project driven by
+          creativity, ambition and the desire to create something different.
+        </p>
+
+        <p>
+          We are starting with clothing, but our vision doesn't stop here.
+        </p>
+
+        <p>
+          Every chapter represents growth. Every release represents
+          evolution. Every step takes us closer to what LIGDZ is meant to become.
+        </p>
+
+        <p>
+          We are not here to follow a moment. We are here to build something that lasts.
+        </p>
+
+        <p>
+          This is only the beginning.
+        </p>
+
+        <div class="signature">— LIGDZ</div>
       </div>
     </section>
 
-    <!-- ABOUT US -->
-
-    <section class="section about-us" id="about">
-
-      <div class="section-label">
-        01 / OUR STORY
-      </div>
-
-      <div class="about-us-grid">
-
-        <h2 class="about-us-title">
-          ABOUT<br>US.
-        </h2>
-
-        <div class="about-us-copy">
-
-          <h3>
-            Every brand has a beginning. This is ours.
-          </h3>
-
-          <p>
-            LIGDZ was created from an idea: to build
-            something that goes beyond clothing.
-          </p>
-
-          <p>
-            What started as a vision became a project
-            driven by creativity, ambition and the desire
-            to create something different.
-          </p>
-
-          <p>
-            We are starting with clothing, but our vision
-            doesn't stop here.
-          </p>
-
-          <p>
-            Every chapter represents growth. Every release
-            represents evolution. Every step takes us closer
-            to what LIGDZ is meant to become.
-          </p>
-
-          <p>
-            We are not here to follow a moment.
-            We are here to build something that lasts.
-          </p>
-
-          <div class="about-signature">
-            THIS IS ONLY THE BEGINNING. — LIGDZ
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- THE WORLD OF LIGDZ -->
-
-    <section class="section world" id="world">
-
-      <div class="section-label">
-        02 / THE PHILOSOPHY
-      </div>
-
-      <h2 class="world-heading">
-        THE WORLD<br>OF LIGDZ.
-      </h2>
+    <section class="section" id="world">
+      <p class="mono section-number">02 / THE WORLD OF LIGDZ</p>
+      <h2>MORE THAN<br>WHAT YOU WEAR.</h2>
 
       <div class="world-grid">
-
         <div class="world-card">
-          <span>01 / VISION</span>
-          <h3>VISION.</h3>
-          <p>
-            We don't follow direction.
-            We create it.
-          </p>
+          <h3>VISION</h3>
+          <p>We don't follow direction. We create it.</p>
         </div>
 
         <div class="world-card">
-          <span>02 / IDENTITY</span>
-          <h3>IDENTITY.</h3>
-          <p>
-            Never built to blend in.
-          </p>
+          <h3>IDENTITY</h3>
+          <p>Never built to blend in.</p>
         </div>
 
         <div class="world-card">
-          <span>03 / PURPOSE</span>
-          <h3>PURPOSE.</h3>
-          <p>
-            Every detail means something.
-          </p>
+          <h3>PURPOSE</h3>
+          <p>Every detail means something.</p>
         </div>
-
       </div>
     </section>
 
-    <!-- CHAPTER 001 -->
+    <section class="chapter" id="chapter">
+      <p class="mono">03 / THE FIRST RELEASE</p>
+      <h2>CHAPTER 001</h2>
 
-    <section class="section chapter" id="chapter">
-
-      <div class="chapter-top">
-        <div class="section-label">
-          03 / FIRST RELEASE
-        </div>
-
-        <div class="chapter-number">
-          CHAPTER 001
-        </div>
-      </div>
-
-      <div class="chapter-title">
-        001.
-      </div>
-
-      <div class="chapter-info">
-
-        <p>
-          NOT EVERY BEGINNING<br>
-          IS MEANT TO BE<br>
-          UNDERSTOOD.
-        </p>
-
-        <div class="status">
-          COMING SOON
-        </div>
-
-      </div>
-    </section>
-
-    <!-- MANIFESTO -->
-
-    <section class="section manifesto">
-
-      <div class="section-label">
-        04 / THE MINDSET
-      </div>
-
-      <h2>
-        Built different.<br>
-        By design.
-      </h2>
-
-      <p>
-        NOT MADE TO FOLLOW.
+      <p class="chapter-phrase">
+        NOT EVERY BEGINNING IS MEANT TO BE UNDERSTOOD.
       </p>
 
+      <div class="coming mono">COMING SOON</div>
     </section>
 
-    <!-- CONTACT -->
+    <section class="section" id="archive">
+      <p class="mono section-number">04 / THE ARCHIVE</p>
+      <h2>EVERY CHAPTER<br>LEAVES A MARK.</h2>
+
+      <div class="archive-content">
+        <p class="mono">THE LIGDZ ARCHIVE</p>
+        <p>
+          A record of ideas, releases and moments.
+          The story will grow with every chapter.
+        </p>
+        <p class="mono" style="margin-top:25px;">ARCHIVE IN DEVELOPMENT</p>
+      </div>
+    </section>
+
+    <section class="manifesto">
+      <h2>BUILT DIFFERENT.<br>BY DESIGN.</h2>
+      <p>NOT MADE TO FOLLOW.</p>
+    </section>
 
     <section class="section contact" id="contact">
-
-      <div class="section-label">
-        05 / GET IN TOUCH
-      </div>
-
-      <h2>
-        LET'S CONNECT.
-      </h2>
-
-      <p>
-        For inquiries and collaborations.
+      <p class="mono section-number">05 / CONTACT</p>
+      <h2>LET'S CONNECT.</h2>
+      <p class="about-copy" style="margin:0 auto 20px;">
+        For questions and inquiries, reach out to us.
       </p>
-
-      <a class="contact-link"
-         href="mailto:ligdz.official@gmail.com">
-        CONTACT LIGDZ ↗
+      <a href="mailto:ligdz.official@gmail.com">
+        LIGDZ.OFFICIAL@GMAIL.COM
       </a>
-
     </section>
-
   </main>
 
   <footer>
-
-    <div>© 2027 LIGDZ</div>
-
-    <a href="#home">BACK TO TOP ↑</a>
-
-    <div>INDEPENDENT BY NATURE.</div>
-
+    <img src="ligdz-logo.jpeg" alt="LIGDZ">
+    <span class="mono">INDEPENDENT CLOTHING</span>
+    <span class="mono">© LIGDZ</span>
   </footer>
 
 </body>
